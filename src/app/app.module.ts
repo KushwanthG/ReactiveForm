@@ -16,7 +16,7 @@ import { TestPipe } from './test.pipe';
 import { TodoComponent } from './todo/todo.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { TodoService } from './todo.service';
-
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { TodoService } from './todo.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
 
   ],
   providers: [RouterModule,TodoService],

@@ -1,10 +1,38 @@
 <!-- 
 <router-outlet></router-outlet>
-<app-header></app-header> -->
-<!-- <h1>{{name | test:wish}}</h1> -->
+<app-header></app-header>
+<h1>{{name | test:wish}}</h1>
 
 
 <div class="container">
     <app-todo></app-todo>
     <app-todolist></app-todolist>
-</div>
+</div> -->
+
+<form action="">
+    
+        <label for="name">Username:</label>
+        <input minlength='4' type="text" class="form-control" ngModel name="Uname" #aa="ngModel" required>
+
+        <ng-container *ngIf="aa.touched">
+            <p class="error-msg" *ngIf="aa.errors?.['required']">Username is required</p>
+            <p class="error-msg" *ngIf="aa.errors?.['minlength']">Username contains 4 Characters </p>
+        </ng-container>
+
+        
+    
+        <label for="pwd">Password:</label>
+        <input  minlength="8" type="password" class="form-control" ngModel name="pwd" #ab="ngModel" required>
+
+        <ng-container *ngIf="ab.touched">
+            <p class="error-msg" *ngIf="ab.errors?.['required']">Password is required</p>
+            <p class="error-msg" *ngIf="ab.errors?.['minlength']">Password contains 8 Characters </p>
+        </ng-container>
+    
+        <button class="btn btn-primary"  (click)="update(aa,ab)">click</button>
+    
+</form>
+
+{{aa.value | json}}
+
+
