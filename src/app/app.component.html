@@ -8,7 +8,7 @@
     <app-todo></app-todo>
     <app-todolist></app-todolist>
 </div> -->
-
+<!-- 
 <form action="">
     
         <label for="name">Username:</label>
@@ -34,5 +34,24 @@
 </form>
 
 {{aa.value | json}}
+ -->
 
+
+
+<form action=""  #login="ngForm">
+
+    <label for="user">Username:</label>
+    <input minlength='2' type="text" ngModel name="username" #user="ngModel" class="form-control" required>
+    
+    <ng-container *ngIf="user.touched">
+        <p class="error-msg" *ngIf="user.errors?.['required']">Username is required</p>
+        <p class="error-msg" *ngIf="user.errors?.['minlength']">Username contains 4 Characters </p>
+    </ng-container>
+
+    <label for="pwd">Password:</label>
+    <input type="password" ngModel name="password" #pwd="ngModel" class="form-control" required>
+
+    <button class="btn btn-primary" (click)="Submit(login)">Submit</button>
+
+</form>
 
