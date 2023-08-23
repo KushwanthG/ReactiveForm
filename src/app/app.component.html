@@ -1,41 +1,6 @@
 <!-- 
 <router-outlet></router-outlet>
 <app-header></app-header>
-<h1>{{name | test:wish}}</h1>
-
-
-<div class="container">
-    <app-todo></app-todo>
-    <app-todolist></app-todolist>
-</div> -->
-<!-- 
-<form action="">
-    
-        <label for="name">Username:</label>
-        <input minlength='4' type="text" class="form-control" ngModel name="Uname" #aa="ngModel" required>
-
-        <ng-container *ngIf="aa.touched">
-            <p class="error-msg" *ngIf="aa.errors?.['required']">Username is required</p>
-            <p class="error-msg" *ngIf="aa.errors?.['minlength']">Username contains 4 Characters </p>
-        </ng-container>
-
-        
-    
-        <label for="pwd">Password:</label>
-        <input  minlength="8" type="password" class="form-control" ngModel name="pwd" #ab="ngModel" required>
-
-        <ng-container *ngIf="ab.touched">
-            <p class="error-msg" *ngIf="ab.errors?.['required']">Password is required</p>
-            <p class="error-msg" *ngIf="ab.errors?.['minlength']">Password contains 8 Characters </p>
-        </ng-container>
-    
-        <button class="btn btn-primary"  (click)="update(aa,ab)">click</button>
-    
-</form>
-
-{{aa.value | json}}
- -->
-
 
 
 <form action=""  #login="ngForm">
@@ -53,5 +18,27 @@
 
     <button class="btn btn-primary" (click)="Submit(login)">Submit</button>
 
-</form>
+</form> -->
 
+<!-- <form [formGroup]="login">
+    <label>Username:</label>
+    <input type="text" class="form-control w-50 m-2"  formControlName="uname">
+    <ng-container *ngIf="login.get('uname').touched && login.get('uname').hasError('required')">Username is required</ng-container>
+    <ng-container *ngIf="login.get('uname').touched && login.get('uname').hasError('minlength')">minlength is required</ng-container>
+    <br>
+    <label for="gmail">Gmail:</label>
+    <input type="gmail" class="form-control w-50 m-2"  formControlName="gmail">
+
+    <button class="btn-primary" (click)="Show()">Enter</button>
+</form> -->
+
+
+<form action="" [formGroup]="test">
+    <div formArrayName="mobile">
+        <div *ngFor="let m of test.get('mobile')['controls'];let i=index"> 
+            Mobile Number {{i}}<input type="text" class="form-control"  formControlName="{{i}}">
+            <button (click)="delete(i)">De</button>
+        </div>
+    </div>
+</form>
+<button class="btn-primary" (click)="Add()">Enter</button>

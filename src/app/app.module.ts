@@ -17,6 +17,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { TodoService } from './todo.service';
 import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
   ],
   providers: [RouterModule,TodoService],
