@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ɵLocaleDataIndex } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,19 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {     
   }
+
+    constructor(private fb:FormBuilder){
+
+    }
+
+
+    reg =this.fb.group(
+      {
+        nname:[null,Validators.required],
+        eemail:[null,Validators.required],
+        mmobile:this.fb.array([[],[]])
+      }
+    )
 
   Submit(forms:any){
     console.log(forms)
@@ -26,7 +39,7 @@ export class AppComponent implements OnInit{
   login= new FormGroup({uname : new FormControl("alex",[Validators.required,Validators.minLength(8)]),gmail:new FormControl("john@gmail.com",[Validators.required,Validators.email])})
 
   Show(){
-    console.log(this.login)
+    console.log(this.register)
   }
 
   test=new FormGroup({
@@ -52,6 +65,35 @@ export class AppComponent implements OnInit{
     console.log(mobile)
   }
 
+
+  register= new FormGroup({
+    classes : new FormControl(null,Validators.required,this.classesCheck)
+  })
+
+
+
+  // users.indexof('user1')=-1
+
+  classesCheck(control):Promise<any>{
+
+    let response = new Promise(
+      (resolve,reject)=>{
+        let users=['user1','user2','user3']
+        let name = control.value
+        setTimeout(() => {
+          if(users.indexOf(name)>0)
+          {
+          resolve({"duliclass":true} )
+
+          }
+          else{
+          resolve (null)
+          }          
+        }, 2000);
+      }
+    )
+    return response
+  }
 }
 
 
