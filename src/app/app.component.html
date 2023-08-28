@@ -60,10 +60,13 @@
 </form> -->
 
 
-<form action="" [formGroup]="register">
+<!-- <form action="" [formGroup]="register">
     Class:
     <input type="text" class="form-control" formControlName="classes">
     <p class="error-msg" *ngIf="this.register.get('classes').touched && this.register.get('classes').errors?.['duliclass']">Class exist</p>
     <button (click)="Show()"></button>
 
-</form>
+</form> -->
+
+<!-- <app-template-form></app-template-form> -->
+<app-reactive-form></app-reactive-form>

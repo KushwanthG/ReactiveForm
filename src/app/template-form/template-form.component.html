@@ -1,0 +1,76 @@
+
+
+
+<div class="card w-50 mx-auto mt-4">
+    <h4 class="card-header text-center">Sign Up</h4>
+    <div class="card-body">
+        <form action="" #r=ngForm (ngSubmit)="signUp(r)">
+            <div class="form-group" ngModelGroup #name="ngModelGroup">
+                <label>Full Name</label>
+                <input type="text" class="form-control" ngModel name="fullname" required minlength="4">
+                <div class="invalid" *ngIf="r.controls['fullname']?.['touched'] && r.controls['fullname']?.['errors']">
+                    <div *ngIf="r.controls['fullname']?.['errors']?.['required']">
+                        <label>Please Enter Full Name : </label>
+                    </div>
+                    <div *ngIf="r.controls['fullname']?.['errors']?.['minlength']">
+                        <label>Full-Name should have 4 characters</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" ngModel name="email" required email>
+                <div class="invalid" *ngIf="r.controls['email']?.['touched'] && r.controls['email']?.['errors']">
+                    <div *ngIf="r.controls['email']?.['errors']?.['required']">
+                        <label>Please Enter Email : </label>
+                    </div>
+                    <div *ngIf="r.controls['email']?.['errors']?.['email']">
+                        <label>Invaild Email</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" ngModel name="password" required minlength="4">
+                <div class="invalid" *ngIf="r.controls['password']?.['touched'] && r.controls['password']?.['errors']">
+                    <div *ngIf="r.controls['password']?.['errors']?.['required']">
+                        <label>Please Enter Password : </label>
+                    </div>
+                    <div *ngIf="r.controls['password']?.['errors']?.['minlength']">
+                        <label>Invaild password</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" ngModel name="cpassword" required minlength="4">
+                <div class="invalid" *ngIf="r.controls['cpassword']?.['touched'] && r.controls['password']?.['value'] !=r.controls['cpassword']?.['value']">
+                        <label>Please Enter the Same Password : </label>
+                </div>
+            </div>
+            
+            <div>
+                <label>
+                    <input type="radio" ngModel name="gender" value="F">FEMALE
+                </label>
+                <label>
+                    <input type="radio" ngModel name="gender" value="M"> MALE
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" ngModel name="subscribe" >subscribe
+                </label>
+            </div>
+
+            <button [disabled]='r.invalid' class="btn btn-primary">Sign UP</button>
+
+            {{r.value|json}}
+        </form>
+
+    </div>
+
+</div>

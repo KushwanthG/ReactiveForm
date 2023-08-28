@@ -1,0 +1,78 @@
+<p>reactive-form works!</p>
+
+<!-- <p class="error-msg" *ngIf="this.register.get('classes').touched && this.register.get('classes').errors?.['duliclass']">Class exist</p> -->
+
+<div class="card w-50 mx-auto mt-4">
+    <h4 class="card-header text-center">Sign Up</h4>
+    <div class="card-body">
+        <form action="" [formGroup]="reg">
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" formControlName="fullname" required minlength="4">
+                <div class="invalid" *ngIf="getC('fullname')?.touched && getC('fullname')?.['errors']">
+                    <div *ngIf="getC('fullname')?.['errors']?.['required']">
+                        <label>Please Enter Full Name : </label>
+                    </div>
+                    <div *ngIf="getC('fullname')?.['errors']?.['minlength']">
+                        <label>Full Name should have 4 characters</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" formControlName="email" required email>
+                <div class="invalid" *ngIf="getC('email')?.['touched'] && getC('email')?.['errors']">
+                    <div *ngIf="getE('email')?.['required']">
+                        <label>Please Enter Email : </label>
+                    </div>
+                    <div *ngIf="getC('email')?.['errors']?.['email']">
+                        <label>Invaild Email</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password" required minlength="4">
+                <div class="invalid" *ngIf="getC('password')?.['touched'] && getC('password')?.['errors']">
+                    <div *ngIf="getC('password')?.['errors']?.['required']">
+                        <label>Please Enter Password : </label>
+                    </div>
+                    <div *ngIf="getC('password')?.['errors']?.['minlength']">
+                        <label>Invaild password</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" formControlName="cpassword" required minlength="4">
+                <div class="invalid" *ngIf="getC('cpassword')?.['touched'] && getC('cpassword')?.['value'] !=getC('password')?.['value']">
+                    <label>Please Enter the Same Password : </label>
+                </div>
+            </div>
+            
+            <div>
+                <label>
+                    <input type="radio" name="gender" value="F">FEMALE
+                </label>
+                <label>
+                    <input type="radio"  name="gender" value="M"> MALE
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="subscribe" >subscribe
+                </label>
+            </div>
+
+            <button [disabled]='reg.invalid' (click)="signUp(reg)" class="btn btn-primary">Sign UP</button>
+
+            {{reg.value|json}}
+        </form>
+
+    </div>
+
+</div>

@@ -12,12 +12,10 @@ import { RouterModule,Routes } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CourselistComponent } from './courselist/courselist.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
-import { TestPipe } from './test.pipe';
-import { TodoComponent } from './todo/todo.component';
-import { TodolistComponent } from './todolist/todolist.component';
-import { TodoService } from './todo.service';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { TemplateFormComponent } from './template-form/template-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 
 @NgModule({
@@ -30,9 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotfoundComponent,
     CourselistComponent,
     CoursedetailsComponent,
-    TestPipe,
-    TodoComponent,
-    TodolistComponent,
+    TemplateFormComponent,
+    ReactiveFormComponent,
 
   ],
   imports: [
@@ -44,7 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
 
   ],
-  providers: [RouterModule,TodoService],
+  providers: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
