@@ -5,7 +5,7 @@
     <h4 class="card-header text-center">Sign Up</h4>
     <div class="card-body">
         <form action="" #r=ngForm (ngSubmit)="signUp(r)">
-            <div class="form-group" ngModelGroup #name="ngModelGroup">
+            <div class="form-group" ngModelGroup>
                 <label>Full Name</label>
                 <input type="text" class="form-control" ngModel name="fullname" required minlength="4">
                 <div class="invalid" *ngIf="r.controls['fullname']?.['touched'] && r.controls['fullname']?.['errors']">

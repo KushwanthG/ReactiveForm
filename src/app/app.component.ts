@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ɵLocaleDataIndex } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +10,32 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class AppComponent implements OnInit{
 
-  ngOnInit(): void {     
+  animals:any="Tiger"
+
+  ngOnInit(): void {
+      
+  }
+
+
+  mobiles=''
+
+
+  mList=[
+    "oppo",
+    "Xiamo",
+    "OnePlus",
+    "OnePlus 2"
+  ]
+
+
+  addMobile(){
+    this.mList=[...this.mList,this.mobiles]
+    this.mobiles=''
+  }
+
+  deleteMobile():any{
+    this.mList.pop()
+    this.mobiles=''
   }
 
     constructor(private fb:FormBuilder){
@@ -59,7 +86,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  delete(i){
+  delete(i: number){
     let mobile =this.test.get('mobile') as FormArray;
     mobile.removeAt(i);
     console.log(mobile)
@@ -67,33 +94,30 @@ export class AppComponent implements OnInit{
 
 
   register= new FormGroup({
-    classes : new FormControl(null,Validators.required,this.classesCheck)
+    classes : new FormControl(null,Validators.required)
   })
 
 
 
   // users.indexof('user1')=-1
 
-  classesCheck(control):Promise<any>{
+  // classesCheck(control: { value: any; }):Promise<any>{
 
-    let response = new Promise(
-      (resolve,reject)=>{
-        let users=['user1','user2','user3']
-        let name = control.value
-        setTimeout(() => {
-          if(users.indexOf(name)>0)
-          {
-          resolve({"duliclass":true} )
+  //   let response = new Promise(
+  //     (resolve,reject)=>{
+  //       let users=['user1','user2','user3']
+  //       let name = control.value
+  //       setTimeout(() => {
+  //         if(users.indexOf(name)>0)
+  //         {
+  //         resolve({"duliclass":true} )
 
-          }
-          else{
-          resolve (null)
-          }          
-        }, 2000);
-      }
-    )
-    return response
-  }
+  //         }
+  //         else{
+  //         resolve (null) 
+  //         } })})
+  //       }
+        
+        
+  // 
 }
-
-

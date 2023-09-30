@@ -10,12 +10,14 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule,Routes } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { CourselistComponent } from './courselist/courselist.component';
-import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { CheckComponent } from './check/check.component';
+import { SampleComponent } from './sample/sample.component';
+import { ChangeInterceptor } from './change.interceptor';
+
 
 
 @NgModule({
@@ -26,10 +28,10 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     ContactComponent,
     HomeComponent,
     NotfoundComponent,
-    CourselistComponent,
-    CoursedetailsComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
+    CheckComponent,
+    SampleComponent,
 
   ],
   imports: [
@@ -41,7 +43,13 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     ReactiveFormsModule,
 
   ],
-  providers: [RouterModule],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:ChangeInterceptor,
+      multi:true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
